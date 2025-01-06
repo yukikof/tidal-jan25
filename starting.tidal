@@ -1,14 +1,14 @@
 -- this is a comment
 --setcps 1.2
 d1 $ sound "bd drum bd hh lighter drum bd hh"
-d2 $ hurry "[sn sn:2 sn] [~ bd [bd bd]/2 sn ~ cp]" -- ~ is rest. [] for subsequences. polyrhythm
+d2 $ sound "[sn sn:2 sn] [~ bd [bd bd]/2 sn ~ cp]" -- ~ is rest. [] for subsequences. polyrhythm
 d2 $ silence
-d3 $ sound "[lighter!2 lighter,bd lighter] <[sn sn] cp>" -- <> adds variety to beat by scheduling
+d3 $ fast 2 $ sound "[lighter!2 lighter,bd lighter] <[sn sn] cp>" -- <> adds variety to beat by scheduling
 d4 $ silence
 
 --d4 $ vowel "a o i i a o i i a o" # sound "co <bd wobble> co co lighter lighter"
---d4 $ up "12 36 12" # sound "jungbass:6" # pan "0 0.5 1" # speed "1 1 2"
---d4 $ sound "kurt:4 kurt:4" # shape "0 0.78" # gain 0.7
+d4 $ up "12 36 12" # sound "jungbass:6" # pan "0 0.5 1" # speed "1 1 2"
+d4 $ sound "kurt:4 kurt:4" # shape "0 0.78" # gain 0.7
 
 d1 $ sound "arpy arpy:1 arpy:2 arpy:3" # pan "0 0.25 0.75 1" # speed "2 2 2 2"
 
@@ -42,10 +42,27 @@ d1 $ jux (hurry 2) $ sound "arpy arpy arpy:1 arpy:2"
 d1 $ chunk 4 (hurry 2) $ sound  "arpy arpy:1 arpy:2 arpy:3"
 d1 $ chunk 4 (# speed 2) $ sound  "alphabet:0 alphabet:1 alphabet:2 alphabet:3"
 
--my code
+-- sq brackets with comma for polyrhythms, curly brackets sets left pattern as main pulse
+d1 $ sound "[drum bd hh bd, can can:2 can:3 can:4 can:2]" --3,5
+d1 $ sound "{drum bd hh bd, can can:2 can:3 can:4 can:2}"
+
+d1 $ sound "bd(5,8)"
+
+
+d1 $ sound "bd(4,6,2)" --heartbeat type thing
+
+--my code
 d1 $ sound "alphabet:0 alphabet:1 alphabet:2 <cp tink>"
 d1 $ jux (hurry 2) $ sound "alphabet:0 alphabet:1 alphabet:2 <cp tink>"
+d1 $ sound "arpy:5(3,8) arpy:3(5,8)" --this rhythm goes
+d1 $ sound "arpy:5(3,8) arpy:3(5,8)" # shape "0 <1 0 0 1>"
+d1 $ sound "arpy:5(3,8) <arpy:3(5,8) bd bd arpy:3(5,8)>" 
+d1 $ sometimes (# speed "2") $ sound "arpy:5(3,8) <arpy:3(5,8) bd bd arpy:3(5,8)>" 
+d1 $ silence
 
+--
+d3 $ fast 2 $ sound "[lighter!2 lighter,bd lighter] <[sn sn] cp>" -- <> adds variety to beat by scheduling
+d3 $ silence
 --solo 2
 
 --unsolo 2
