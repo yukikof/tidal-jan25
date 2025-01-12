@@ -47,9 +47,28 @@ d1 $ sound "[drum bd hh bd, can can:2 can:3 can:4 can:2]" --3,5
 d1 $ sound "{drum bd hh bd, can can:2 can:3 can:4 can:2}"
 
 d1 $ sound "bd(5,8)"
+d1 $ sound "arpy(3,8)" # n (irand 16)
+d1 $ degradeBy 0.1 $ sound "tink*16"
 
+d1 $ sound "bev" # legato 1
+-- wait a bit, then..
+hush
+
+d2 $ slow 4 $ sound "pebbles ~" # cut 1
+d1 $ chop 32 $ sound "bev" --granular synthesis
+
+d1 $ chop 16 $ sound "arpy:1 arpy:2 arpy:3 arpy:4"
+d1 $ slow 4 $ striate 16 $ sound "arpy:1 arpy:2 arpy:3 arpy:4"
+
+d1 $ randslice 32 $ sound "bev"
+d1 $ loopAt 4 $ sound "bev" --loopat # affects pitch as well
 
 d1 $ sound "bd(4,6,2)" --heartbeat type thing
+
+d1 $ loopAt "<8 4 16>" $ chop 128 $  sound "bev*4" # cut 1
+d1 $ rev $ loopAt 8 $ chop 64 $ sound "bev"
+
+d1 $ loopAt 2 $ sound "arpy:6 arpy:4" 
 
 --my code
 d1 $ sound "alphabet:0 alphabet:1 alphabet:2 <cp tink>"
@@ -59,6 +78,8 @@ d1 $ sound "arpy:5(3,8) arpy:3(5,8)" # shape "0 <1 0 0 1>"
 d1 $ sound "arpy:5(3,8) <arpy:3(5,8) bd bd arpy:3(5,8)>" 
 d1 $ sometimes (# speed "2") $ sound "arpy:5(3,8) <arpy:3(5,8) bd bd arpy:3(5,8)>" 
 d1 $ silence
+
+
 
 --
 d3 $ fast 2 $ sound "[lighter!2 lighter,bd lighter] <[sn sn] cp>" -- <> adds variety to beat by scheduling
